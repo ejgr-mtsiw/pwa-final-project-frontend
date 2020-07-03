@@ -1,0 +1,25 @@
+
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/mixins";
+
+/* Change theme-colors */
+$theme-colors: (
+  "primary": #a10000,
+  "menubg": #790000,
+  "catbg": #301919,
+  "linkbg": #a94848,
+  "hoverbg": #e88080,
+);
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+@import "../node_modules/@fortawesome/fontawesome-free/scss/fontawesome";
+//@import "../node_modules/@fortawesome/fontawesome-free/scss/regular";
+@import "../node_modules/@fortawesome/fontawesome-free/scss/solid";
+
+body {
+  margin: 0px;
+  padding: 0px;
+  background: #f0f0f0;
+}
