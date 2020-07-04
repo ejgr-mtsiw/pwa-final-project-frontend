@@ -12,6 +12,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AdminKitListComponent } from './admin-kit-list/admin-kit-list.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { LogoutComponent } from './logout/logout.component';
+import { AdminKitEditFormComponent } from './admin-kit-edit-form/admin-kit-edit-form.component';
+import { AdminKitCreateFormComponent } from './admin-kit-create-form/admin-kit-create-form.component';
 
 @NgModule({
     declarations: [
@@ -20,7 +22,9 @@ import { LogoutComponent } from './logout/logout.component';
         MainMenuComponent,
         AdminKitListComponent,
         LoginFormComponent,
-        LogoutComponent
+        LogoutComponent,
+        AdminKitEditFormComponent,
+        AdminKitCreateFormComponent
     ],
     imports: [
         BrowserModule,

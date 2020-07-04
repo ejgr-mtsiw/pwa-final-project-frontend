@@ -34,7 +34,7 @@
             <li *ngIf="authService.isAuthenticated()">
                 <span class="sub-menu-title">
                     <i class="fas fa-cogs"></i>
-                    {{ userinfo.name }}
+                    {{ authService.authenticatedUser.name }}
                 </span>
                 <ul class="sub-menu">
                     <li>

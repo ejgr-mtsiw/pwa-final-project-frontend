@@ -10,19 +10,9 @@ import { User } from '../models/user';
 })
 
 export class MainMenuComponent implements OnInit {
-    public userinfo: User = {
-        id: 0,
-        email: '',
-        name: '',
-        role: '',
-        lastLogin: ''
-    };
-
     public isMenuCollapsed = true;
 
     constructor(public authService: AuthService) { }
 
-    ngOnInit(): void {
-        
-    }
+    ngOnInit(): void { }
 }

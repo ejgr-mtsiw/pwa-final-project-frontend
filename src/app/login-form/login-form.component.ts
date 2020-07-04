@@ -24,7 +24,7 @@ export class LoginFormComponent implements OnInit {
             this.model.password
         ).subscribe((user) => {
             this.authService.setUserInfo(user);
-            this.router.navigate(['/']);
+            this.router.navigate(['admin/kits']);
         }, (error) => {
             this.errorHidden = false;
         });

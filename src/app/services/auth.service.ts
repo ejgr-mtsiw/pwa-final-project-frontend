@@ -21,7 +21,7 @@ export class AuthService {
             return true;
         }
 
-        return false;
+        return this.loadUserData();
     }
 
     public isAdmin(): boolean {
@@ -35,12 +35,28 @@ export class AuthService {
         return false;
     }
 
+    private loadUserData(): boolean {
+
+        let userData = localStorage.getItem('userInfo');
+        if (userData) {
+            let user: User = JSON.parse(userData);
+            if (user) {
+                this.authenticatedUser = user;
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public setUserInfo(user: User) {
         this.authenticatedUser = user;
+        localStorage.setItem('userInfo', JSON.stringify(user));
     }
 
     public destroyUserInfo() {
         this.authenticatedUser = null;
+        localStorage.removeItem('userInfo');
     }
 
     public validate(email: String, password: String): Observable<User> {
