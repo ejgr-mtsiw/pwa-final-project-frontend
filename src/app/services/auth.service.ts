@@ -17,30 +17,17 @@ export class AuthService {
 
     public isAuthenticated(): boolean {
 
-        return this.loadUserData();
-    }
-
-    public isAdmin(): boolean {
-
-        if (this.loadUserData()) {
-            if (this.authenticatedUser.role == 'admin') {
-                return true;
-            }
+        if (this.authenticatedUser) {
+            return true;
         }
 
         return false;
     }
 
-    private loadUserData(): boolean {
-        if (this.authenticatedUser) {
-            return true;
-        }
+    public isAdmin(): boolean {
 
-        let userData = localStorage.getItem('userInfo')
-        if (userData) {
-            let user: User = JSON.parse(userData);
-            if (user) {
-                this.authenticatedUser = user;
+        if (this.isAuthenticated()) {
+            if (this.authenticatedUser.role == 'admin') {
                 return true;
             }
         }
@@ -50,12 +37,10 @@ export class AuthService {
 
     public setUserInfo(user: User) {
         this.authenticatedUser = user;
-        localStorage.setItem('userInfo', JSON.stringify(user));
     }
 
     public destroyUserInfo() {
         this.authenticatedUser = null;
-        localStorage.removeItem('userInfo');
     }
 
     public validate(email: String, password: String): Observable<User> {

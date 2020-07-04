@@ -3,14 +3,14 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AuthGuardService as AuthGuard } from './services/auth-guard.service';
 
-import { LoginComponent } from './login/login.component';
+import { LoginFormComponent } from './login-form/login-form.component';
 import { LogoutComponent } from './logout/logout.component';
 import { KitsListComponent } from './kits-list/kits-list.component';
 import { AdminKitListComponent } from './admin-kit-list/admin-kit-list.component';
 
 const routes: Routes = [
     { path: '', component: KitsListComponent },
-    { path: 'login', component: LoginComponent },
+    { path: 'login', component: LoginFormComponent },
     { path: 'logout', component: LogoutComponent },
     { path: 'kits', component: KitsListComponent },
     {

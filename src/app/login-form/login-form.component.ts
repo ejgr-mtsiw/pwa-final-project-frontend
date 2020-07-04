@@ -4,32 +4,29 @@ import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
 @Component({
-    selector: 'app-login',
-    templateUrl: './login.component.html',
-    styleUrls: ['./login.component.scss']
+    selector: 'app-login-form',
+    templateUrl: './login-form.component.html',
+    styleUrls: ['./login-form.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginFormComponent implements OnInit {
 
-    userEmail: String = '';
-    userPassword: String = '';
+    model = { email: '', password: '' }
 
-    submitted = false;
+    errorHidden: boolean = true;
 
     constructor(private authService: AuthService, private router: Router) { }
 
     ngOnInit() { }
 
     onSubmit() {
-        this.submitted = true;
-    }
-
-    login() {
         this.authService.validate(
-            this.userEmail,
-            this.userPassword
-        ).subscribe(user => {
+            this.model.email,
+            this.model.password
+        ).subscribe((user) => {
             this.authService.setUserInfo(user);
             this.router.navigate(['/']);
+        }, (error) => {
+            this.errorHidden = false;
         });
     }
 }
