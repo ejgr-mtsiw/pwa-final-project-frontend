@@ -1,0 +1,18 @@
+<div class="m-2 mt-5 p-3 kit-event-list">
+    <h3>Ocorrências</h3>
+
+    <app-admin-kit-events-create-form [kit]="kit" (newEvent)="onNewEvent($event)"></app-admin-kit-events-create-form>
+
+    <ol class="list-group">
+        <li class="list-group-item kit-event" *ngFor="let event of events.slice().reverse(); index as i">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="kit-event-description mb-1">{{ event.description }}</h5>
+                <small>
+                    <i class="far fa-clock"></i>
+                    {{ event.date | date:'dd/MM/yyyy HH:mm' }}
+                </small>
+            </div>
+            <p class="mb-1">{{ event.details }}</p>
+        </li>
+    </ol>
+</div>

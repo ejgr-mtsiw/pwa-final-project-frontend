@@ -1,0 +1,12 @@
+<div id="messages-display" class="mt-3" *ngIf="message && message.type != messageTypes.NONE">
+    <div class="alert" role="alert" [class]="{
+        'alert-danger': message.type == messageTypes.DANGER,
+        'alert-info': message.type == messageTypes.INFO,
+        'alert-success': message.type == messageTypes.SUCCESS,
+        'alert-warning': message.type == messageTypes.WARNING
+    }">
+        <p class="mb-0">
+            {{ message.message }}
+        </p>
+    </div>
+</div>

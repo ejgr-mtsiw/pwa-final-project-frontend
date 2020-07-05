@@ -1,5 +1,5 @@
 <div class="nav-side-menu">
-    <div class="brand">S.M.R.A.E.M.B.</div>
+    <div class="brand">M.E.V.</div>
     <i class="fa fa-bars fa-2x navbar-toggler toggle-btn" (click)="isMenuCollapsed = !isMenuCollapsed"></i>
     <div class="menu-list">
         <ul [ngbCollapse]="isMenuCollapsed" class="menu-content collapse out" id="menu-content">
@@ -51,6 +51,7 @@
                     </li>
                 </ul>
             </li>
+            <app-main-menu-kit-list *ngIf="!authService.isAuthenticated()"></app-main-menu-kit-list>
             <li *ngIf="!authService.isAuthenticated()">
                 <span class="sub-menu-title">
                     <i class="fas fa-toolbox"></i>
@@ -58,7 +59,7 @@
                 </span>
                 <ul class="sub-menu">
                     <li>
-                        <a class="item" routerLink="/login" routerLinkActive="active">
+                        <a class="item" [routerLink]="['/login']" routerLinkActive="active">
                             <i class="fas fa-sign-in-alt"></i>
                             Iniciar sessão
                         </a>

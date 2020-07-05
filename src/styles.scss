@@ -9,13 +9,14 @@ $theme-colors: (
   "menubg": #790000,
   "catbg": #301919,
   "linkbg": #a94848,
+  "activelinkbg": #b96868,
   "hoverbg": #e88080,
 );
 
 @import "../node_modules/bootstrap/scss/bootstrap";
 
 @import "../node_modules/@fortawesome/fontawesome-free/scss/fontawesome";
-//@import "../node_modules/@fortawesome/fontawesome-free/scss/regular";
+@import "../node_modules/@fortawesome/fontawesome-free/scss/regular";
 @import "../node_modules/@fortawesome/fontawesome-free/scss/solid";
 
 body {

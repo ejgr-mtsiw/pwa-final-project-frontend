@@ -2,7 +2,7 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
 import { KitService } from '../services/kit.service';
 import { Kit } from '../models/kit';
-import { Message } from '../messages/message';
+import { Message, MessageTypes } from '../message/message';
 
 @Component({
     selector: 'app-admin-kit-create-form',
@@ -24,28 +24,25 @@ export class AdminKitCreateFormComponent implements OnInit {
     @Output()
     newKit = new EventEmitter<Kit>();
 
-    message: Message = new Message(true, '', '');
+    messageTypes = MessageTypes;
+    message!: Message;
 
     constructor(private kitService: KitService) { }
 
     ngOnInit() { }
 
     onSubmit() {
-        this.message.hidden = true;
-
         this.kitService.addKit(this.kit).subscribe((result) => {
-            this.newKit.emit(this.kit);
+            this.newKit.emit(result.kit);
 
             return this.resultMessage.emit(new Message(
-                false,
-                'success',
+                MessageTypes.SUCCESS,
                 result.message.pt ||
                 'Novo kit criado com sucesso.'
             ));
         }, (error) => {
             this.message = new Message(
-                false,
-                'danger',
+                MessageTypes.DANGER,
                 error.message.pt ||
                 'Ocorreu um erro ao processor o seu pedido, por favor tente mais tarde.'
             );
@@ -53,8 +50,7 @@ export class AdminKitCreateFormComponent implements OnInit {
     }
 
     onCancel() {
-        this.resultMessage.emit(new Message(true, '', ''));
-        this.message.hidden = true;
+        this.resultMessage.emit(new Message(MessageTypes.NONE, ''));
         return false;
     }
 

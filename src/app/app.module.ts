@@ -14,6 +14,17 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { LogoutComponent } from './logout/logout.component';
 import { AdminKitEditFormComponent } from './admin-kit-edit-form/admin-kit-edit-form.component';
 import { AdminKitCreateFormComponent } from './admin-kit-create-form/admin-kit-create-form.component';
+import { ModalContentComponent } from './modal-content/modal-content.component';
+import { MessageDisplayComponent } from './message-display/message-display.component';
+import { KitDetailsComponent } from './kit-details/kit-details.component';
+import { MainMenuKitListComponent } from './main-menu-kit-list/main-menu-kit-list.component';
+import { HomeComponent } from './home/home.component';
+import { KitReadingsComponent } from './kit-readings/kit-readings.component';
+import { FooterComponent } from './footer/footer.component';
+import { AdminKitDetailsComponent } from './admin-kit-details/admin-kit-details.component';
+import { AdminKitEventsComponent } from './admin-kit-events/admin-kit-events.component';
+import { AdminKitEventsCreateFormComponent } from './admin-kit-events-create-form/admin-kit-events-create-form.component';
+import { AdminKitReadingsComponent } from './admin-kit-readings/admin-kit-readings.component';
 
 @NgModule({
     declarations: [
@@ -24,14 +35,25 @@ import { AdminKitCreateFormComponent } from './admin-kit-create-form/admin-kit-c
         LoginFormComponent,
         LogoutComponent,
         AdminKitEditFormComponent,
-        AdminKitCreateFormComponent
+        AdminKitCreateFormComponent,
+        ModalContentComponent,
+        MessageDisplayComponent,
+        KitDetailsComponent,
+        MainMenuKitListComponent,
+        HomeComponent,
+        KitReadingsComponent,
+        FooterComponent,
+        AdminKitDetailsComponent,
+        AdminKitEventsComponent,
+        AdminKitEventsCreateFormComponent,
+        AdminKitReadingsComponent
     ],
     imports: [
         BrowserModule,
         NgbModule,
-        AppRoutingModule,
         HttpClientModule,
-        FormsModule
+        FormsModule,
+        AppRoutingModule
     ],
     providers: [],
     bootstrap: [

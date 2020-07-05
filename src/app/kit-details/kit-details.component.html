@@ -1,0 +1,9 @@
+<div class="card m-2" *ngIf="kit$ | async as kit">
+    <img class="card-img-top" src="{{ getPhotoUrl() }}" alt="{{ kit.location }}">
+    <div class="card-body">
+        <h5 class="card-title">{{ kit.name }}</h5>
+        <p class="card-text">{{ kit.location }}</p>
+    </div>
+</div>
+
+<app-kit-readings></app-kit-readings>

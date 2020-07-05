@@ -1,0 +1,14 @@
+<li>
+    <span class="sub-menu-title">
+        <i class="fas fa-wifi"></i>
+        Kits
+    </span>
+    <ul class="sub-menu">
+        <li *ngFor="let kit of kits">
+            <a class="item" [routerLink]="['/kits', kit.id]" routerLinkActive="active">
+                <i class="fas fa-microchip"></i>
+                {{ kit.location }}
+            </a>
+        </li>
+    </ul>
+</li>

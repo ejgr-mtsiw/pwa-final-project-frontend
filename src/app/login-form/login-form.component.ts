@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AuthService } from '../services/auth.service';
+import { MessageTypes, Message } from '../message/message';
 
 @Component({
     selector: 'app-login-form',
@@ -12,7 +13,8 @@ export class LoginFormComponent implements OnInit {
 
     model = { email: '', password: '' }
 
-    errorHidden: boolean = true;
+    messageTypes = MessageTypes;
+    message!: Message;
 
     constructor(private authService: AuthService, private router: Router) { }
 
@@ -26,7 +28,10 @@ export class LoginFormComponent implements OnInit {
             this.authService.setUserInfo(user);
             this.router.navigate(['admin/kits']);
         }, (error) => {
-            this.errorHidden = false;
+            this.message = new Message(
+                MessageTypes.DANGER,
+                'Os dados indicados não são válidos!'
+            );
         });
     }
 }

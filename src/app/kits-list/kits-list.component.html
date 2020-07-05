@@ -1,6 +1,6 @@
-<div class="card-columns">
+<div class="card-deck">
     <div class="card m-2" *ngFor="let kit of kits">
-        <img class="card-img-top" src="./api/kits/{{ kit.id }}/photo" alt="{{ kit.location }}">
+        <img class="card-img-top" src="{{ getPhotoUrl(kit) }}" alt="{{ kit.location }}">
         <div class="card-body">
             <h5 class="card-title">{{ kit.name }}</h5>
             <p class="card-text">{{ kit.location }}</p>

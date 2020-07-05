@@ -5,6 +5,8 @@
 export const environment = {
     production: false,
     kitServiceBaseUrl: 'https://mtsiw.duckdns.org/pwa/api/kits',
+    readingsServiceBaseUrl: 'https://mtsiw.duckdns.org/pwa/api/kits',
+    eventsServiceBaseUrl: 'https://mtsiw.duckdns.org/pwa/api/kits',
     authServiceBaseUrl: 'https://mtsiw.duckdns.org/pwa/api/auth'
 };
 

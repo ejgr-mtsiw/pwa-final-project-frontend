@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Kit } from '../models/kit';
 import { KitService } from '../services/kit.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
     selector: 'app-kits-list',
@@ -19,6 +20,12 @@ export class KitsListComponent implements OnInit {
     }
 
     getKits(): void {
-        this.kitService.getKits().subscribe((kits) => (this.kits = kits));
+        this.kitService.getKits().subscribe((kits) => {
+            this.kits = kits;
+        });
+    }
+
+    getPhotoUrl(kit: Kit): string {
+        return `${environment.kitServiceBaseUrl}/${kit.id}/photo`;
     }
 }

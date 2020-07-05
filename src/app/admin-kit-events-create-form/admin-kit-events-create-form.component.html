@@ -1,0 +1,27 @@
+<div *ngIf="event">
+    <form #eventCreateForm="ngForm" (ngSubmit)="onSubmit(); eventCreateForm.resetForm();" class="p-3 mb-5">
+        <div class="form-group">
+            <label for="description">Ocorrência</label>
+            <input type="text" id="description" name="description" required [(ngModel)]="event.description"
+                class="form-control" #description="ngModel">
+        </div>
+        <div [hidden]="description.valid || description.pristine" class="alert alert-danger">
+            Por favor, introduza uma descrição para a ocorrência.
+        </div>
+
+        <div class="form-group">
+            <label for="details">Detalhes</label>
+            <textarea id="details" name="details" required [(ngModel)]="event.details" class="form-control"
+                #details="ngModel"></textarea>
+        </div>
+        <div [hidden]="details.valid || details.pristine" class="alert alert-danger">
+            Por favor, adicione alguns detalhes à ocorrência.
+        </div>
+
+        <button class="btn btn-primary" [disabled]="!eventCreateForm.form.valid" type="submit">
+            Registar ocorrência
+        </button>
+
+        <app-message-display [message]="message"></app-message-display>
+    </form>
+</div>

@@ -1,0 +1,18 @@
+<div *ngIf="kit">
+    <div class="card m-2">
+        <img class="card-img-top" src="{{ getPhotoUrl() }}" alt="{{ kit.location }}">
+        <div class="card-body">
+            <h5 class="card-title">{{ kit.name }}</h5>
+            <p class="card-text">{{ kit.location }}</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <app-admin-kit-readings [kit]="kit"></app-admin-kit-readings>
+        </div>
+        <div class="col-md-6">
+            <app-admin-kit-events [kit]="kit"></app-admin-kit-events>
+        </div>
+    </div>
+</div>

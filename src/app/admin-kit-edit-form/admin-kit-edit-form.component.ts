@@ -2,7 +2,7 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 import { KitService } from '../services/kit.service';
 import { Kit } from '../models/kit';
-import { Message } from '../messages/message';
+import { Message, MessageTypes } from '../message/message';
 
 @Component({
     selector: 'app-admin-kit-edit-form',
@@ -17,26 +17,23 @@ export class AdminKitEditFormComponent implements OnInit {
     @Output()
     resultMessage = new EventEmitter<Message>();
 
-    message: Message = new Message(true, '', '');
+    messageTypes = MessageTypes;
+    message!: Message;
 
     constructor(private kitService: KitService) { }
 
     ngOnInit() { }
 
     onSubmit() {
-        this.message.hidden = true;
-
         this.kitService.updateKit(this.kit).subscribe((result) => {
             return this.resultMessage.emit(new Message(
-                false,
-                'success',
+                MessageTypes.SUCCESS,
                 result.message.pt ||
                 'Os dados do kit foram atualizados.'
             ));
         }, (error) => {
             this.message = new Message(
-                false,
-                'danger',
+                MessageTypes.DANGER,
                 error.message.pt ||
                 'Ocorreu um erro ao processor o seu pedido, por favor tente mais tarde.'
             );
@@ -44,8 +41,7 @@ export class AdminKitEditFormComponent implements OnInit {
     }
 
     onCancel() {
-        this.message.hidden = true;
-        this.resultMessage.emit(new Message(true, '', ''));
+        this.resultMessage.emit(new Message(MessageTypes.NONE, ''));
         return false;
     }
 }

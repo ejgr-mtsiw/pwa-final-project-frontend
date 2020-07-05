@@ -20,8 +20,12 @@ export class KitService {
         return this.http.get<Kit[]>(environment.kitServiceBaseUrl);
     }
 
+    getKit(id: number): Observable<Kit> {
+        return this.http.get<Kit>(`${environment.kitServiceBaseUrl}/${id}`);
+    }
+
     addKit(kit: Kit): Observable<any> {
-        return this.http.post(environment.kitServiceBaseUrl + '/create',
+        return this.http.post(`${environment.kitServiceBaseUrl}/create`,
             JSON.stringify(kit),
             {
                 headers: this.headers
@@ -30,11 +34,18 @@ export class KitService {
     }
 
     updateKit(kit: Kit): Observable<any> {
-        return this.http.put(environment.kitServiceBaseUrl + `/${kit.id}/update`,
+        return this.http.put(
+            `${environment.kitServiceBaseUrl}/${kit.id}/update`,
             JSON.stringify(kit),
             {
                 headers: this.headers
             }
+        );
+    }
+
+    deleteKit(kit: Kit): Observable<any> {
+        return this.http.delete(
+            `${environment.kitServiceBaseUrl}/${kit.id}/delete`
         );
     }
 }

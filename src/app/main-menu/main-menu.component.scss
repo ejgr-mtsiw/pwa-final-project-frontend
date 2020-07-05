@@ -64,7 +64,9 @@
 }
 
 .nav-side-menu ul,
-.nav-side-menu li {
+.nav-side-menu li,
+.sub-menu,
+.sub-menu li {
   list-style: none;
   padding: 0px;
   margin: 0px;
@@ -91,6 +93,10 @@ a#menu-link-home:hover,
   padding-left: 4px;
 }
 
+.sub-menu li a.active {
+  background-color: theme-color("activelinkbg");
+}
+
 #menu-link-home i,
 .sub-menu li a i {
   padding-left: 10px;
@@ -98,7 +104,7 @@ a#menu-link-home:hover,
   padding-right: 20px;
 }
 
-#sub-menu li i {
+.sub-menu li i {
   padding-left: 0;
   width: 20px;
   padding-right: 20px;
