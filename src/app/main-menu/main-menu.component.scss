@@ -93,6 +93,7 @@ a#menu-link-home:hover,
   padding-left: 4px;
 }
 
+a#menu-link-home.active,
 .sub-menu li a.active {
   background-color: theme-color("activelinkbg");
 }

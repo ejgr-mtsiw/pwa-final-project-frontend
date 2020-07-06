@@ -11,7 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { AdminKitDetailsComponent } from './admin-kit-details/admin-kit-details.component';
 
 const routes: Routes = [
-    { path: '', component: HomeComponent },
+    { path: 'home', component: HomeComponent },
     { path: 'login', component: LoginFormComponent },
     { path: 'logout', component: LogoutComponent },
     { path: 'kits/:KitId', component: KitDetailsComponent },
@@ -24,7 +24,8 @@ const routes: Routes = [
         path: 'admin/kits',
         component: AdminKitListComponent,
         canActivate: [AuthGuard]
-    }
+    },
+    { path: '',   redirectTo: '/home', pathMatch: 'full' }
 ];
 
 @NgModule({
