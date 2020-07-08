@@ -1,4 +1,4 @@
-<div class="shadow-sm m-2 mt-5 p-3 bg-white">
+<div class="m-2 mt-5">
     <h3>Leituras</h3>
 
     <table class="table table-striped">
@@ -6,16 +6,16 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Data</th>
-                <th class="text-right" scope="col">Temperatura (ºC)</th>
-                <th class="text-right" scope="col">Humidade (%)</th>
+                <th class="text-right" scope="col">Temperatura</th>
+                <th class="text-right" scope="col">Humidade</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let reading of readings$ | async; index as i">
                 <th scope="row">{{ i + 1 }}</th>
                 <td>{{ reading.date | date:'dd/MM/yyyy HH:mm' }}</td>
-                <td class="text-right">{{ reading.temperature | number }}</td>
-                <td class="text-right">{{ reading.humidity | number }}</td>
+                <td class="text-right">{{ reading.temperature | number }}ºC</td>
+                <td class="text-right">{{ reading.humidity | number }}%</td>
             </tr>
         </tbody>
     </table>
