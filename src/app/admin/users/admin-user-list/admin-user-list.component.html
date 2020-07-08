@@ -1,0 +1,68 @@
+<nav class="sticky-top" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a title="Administração" routerLink="/admin">
+                Administração
+            </a>
+        </li>
+        <li aria-current="page" class="breadcrumb-item active">
+            Utilizadores
+        </li>
+    </ol>
+</nav>
+
+<h1>Utilizadores</h1>
+<div class="row">
+    <div [class]="listClass">
+        <app-message-display [message]="message"></app-message-display>
+
+        <div class="table-responsive">
+            <table class="table table-striped table-hover" id="kits-table">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>E-mail</th>
+                        <th>Tipo</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of users">
+                        <td>{{ user.name }}</td>
+                        <td>{{ user.email }}</td>
+                        <td *ngIf="user.role=='admin'">Administrador</td>
+                        <td *ngIf="user.role=='user'">Utilizador</td>
+                        <td class="text-right">
+                            <div aria-label="Ações" class="btn-group" role="group">
+                                <button class="btn btn-primary btn-sm" title="Editar" (click)="onEditUserClick(user)">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="btn btn-danger btn-sm" title="Eliminar" (click)="onDeleteUserClick(user)">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th colspan="4">
+                            <button class="btn btn-primary" (click)="onCreateUserClick()">
+                                <i class="fas fa-plus"></i>
+                                Novo Utilizador
+                            </button>
+                        </th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-6" *ngIf="editFormVisible">
+        <app-admin-user-edit-form [user]="selectedUser" (resultMessage)="onResultMessage($event)">
+        </app-admin-user-edit-form>
+    </div>
+    <div class="col-md-6" *ngIf="createFormVisible">
+        <app-admin-user-create-form (resultMessage)="onResultMessage($event)" (newUser)="onNewUser($event)">
+        </app-admin-user-create-form>
+    </div>
+</div>

@@ -1,13 +1,5 @@
-export enum MessageTypes {
-    NONE,
-    DANGER,
-    INFO,
-    SUCCESS,
-    WARNING
-}
-
+import { MessageTypes } from './message-types';
 export class Message {
-
     type: MessageTypes = MessageTypes.NONE;
     message: string = '';
 

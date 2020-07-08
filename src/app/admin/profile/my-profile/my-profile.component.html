@@ -1,0 +1,47 @@
+<nav class="sticky-top" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a title="Administração" routerLink="/admin">
+                Administração
+            </a>
+        </li>
+        <li aria-current="page" class="breadcrumb-item active">
+            O meu perfil
+        </li>
+    </ol>
+</nav>
+
+<h1>{{ user.name }}</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-md-12 col-sm-12 mb-5">
+            <div class="card">
+                <div class="card-body">
+                    <app-my-profile-gravatar [email]="user.email"></app-my-profile-gravatar>
+                    <h5 class="card-title">{{ user.name }}</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">{{ user.email }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm">
+            <form #passwordChangeForm="ngForm" (ngSubmit)="onSubmit(); passwordChangeForm.resetForm();" class="shadow-sm p-3 mb-5 bg-white rounded">
+                <div class="form-group">
+                    <label for="password">Palavra passe</label>
+                    <input class="form-control" id="password" name="password" required type="password" [(ngModel)]="newPassword"
+                        #password="ngModel">
+
+                    <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
+                        Por favor, introduza a nova palavra passe.
+                    </div>
+                </div>
+
+                <button class="btn btn-primary" [disabled]="!passwordChangeForm.form.valid" type="submit">Alterar
+                    palavra passe</button>
+            </form>
+
+            <app-message-display [message]="message"></app-message-display>
+        </div>
+    </div>
+</div>

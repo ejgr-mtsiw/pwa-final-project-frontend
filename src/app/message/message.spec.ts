@@ -1,7 +1,7 @@
-import { Message, MessageTypes } from './message';
+import { Message } from './message';
 
 describe('Message', () => {
   it('should create an instance', () => {
-    expect(new Message(MessageTypes.NONE, '')).toBeTruthy();
+    expect(new Message()).toBeTruthy();
   });
 });
