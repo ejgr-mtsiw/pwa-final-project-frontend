@@ -9,15 +9,28 @@ import { AdminKitListComponent } from './admin-kit-list/admin-kit-list.component
 import { KitDetailsComponent } from './kit-details/kit-details.component';
 import { HomeComponent } from './home/home.component';
 import { AdminKitDetailsComponent } from './admin-kit-details/admin-kit-details.component';
+import { MyProfileComponent } from './my-profile/my-profile.component';
 
 const routes: Routes = [
-    { path: 'home', component: HomeComponent },
-    { path: 'login', component: LoginFormComponent },
-    { path: 'logout', component: LogoutComponent },
-    { path: 'kits/:KitId', component: KitDetailsComponent },
     {
-        path: 'admin/kits/:KitId',
-        component: AdminKitDetailsComponent,
+        path: 'home',
+        component: HomeComponent
+    },
+    {
+        path: 'login',
+        component: LoginFormComponent
+    },
+    {
+        path: 'logout',
+        component: LogoutComponent
+    },
+    {
+        path: 'kits/:KitId',
+        component: KitDetailsComponent
+    },
+    {
+        path: 'my/profile',
+        component: MyProfileComponent,
         canActivate: [AuthGuard]
     },
     {
@@ -25,7 +38,16 @@ const routes: Routes = [
         component: AdminKitListComponent,
         canActivate: [AuthGuard]
     },
-    { path: '',   redirectTo: '/home', pathMatch: 'full' }
+    {
+        path: 'admin/kits/:KitId',
+        component: AdminKitDetailsComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: '',
+        redirectTo: '/home',
+        pathMatch: 'full'
+    }
 ];
 
 @NgModule({

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { environment } from '../../environments/environment';
 import { User } from '../models/user';
@@ -10,6 +10,9 @@ import { User } from '../models/user';
 })
 
 export class AuthService {
+    private headers: HttpHeaders = new HttpHeaders(
+        { 'Content-Type': 'application/json' }
+    );
 
     public authenticatedUser: any = null;
 
@@ -61,8 +64,19 @@ export class AuthService {
 
     public validate(email: String, password: String): Observable<User> {
         return this.http.post<User>(
-            environment.authServiceBaseUrl + '/signin',
-            { 'email': email, 'password': password }
+            `${environment.authServiceBaseUrl}/signin`,
+            JSON.stringify({ 'email': email, 'password': password }),
+            { headers: this.headers }
+        );
+    }
+
+    public updatePassword(password: string) {
+        return this.http.put<any>(
+            `${environment.userServiceBaseUrl}/profile/update`,
+            JSON.stringify({
+                'id': this.authenticatedUser.id, 'password': password
+            }),
+            { headers: this.headers }
         );
     }
 }

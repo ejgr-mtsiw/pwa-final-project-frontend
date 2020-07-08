@@ -25,6 +25,8 @@ import { AdminKitDetailsComponent } from './admin-kit-details/admin-kit-details.
 import { AdminKitEventsComponent } from './admin-kit-events/admin-kit-events.component';
 import { AdminKitEventsCreateFormComponent } from './admin-kit-events-create-form/admin-kit-events-create-form.component';
 import { AdminKitReadingsComponent } from './admin-kit-readings/admin-kit-readings.component';
+import { MyProfileComponent } from './my-profile/my-profile.component';
+import { MyProfileGravatarComponent } from './my-profile-gravatar/my-profile-gravatar.component';
 
 @NgModule({
     declarations: [
@@ -46,7 +48,9 @@ import { AdminKitReadingsComponent } from './admin-kit-readings/admin-kit-readin
         AdminKitDetailsComponent,
         AdminKitEventsComponent,
         AdminKitEventsCreateFormComponent,
-        AdminKitReadingsComponent
+        AdminKitReadingsComponent,
+        MyProfileComponent,
+        MyProfileGravatarComponent
     ],
     imports: [
         BrowserModule,
