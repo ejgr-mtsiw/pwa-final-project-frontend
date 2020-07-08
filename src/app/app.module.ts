@@ -30,6 +30,7 @@ import { MyProfileGravatarComponent } from './my-profile-gravatar/my-profile-gra
 import { AdminUserListComponent } from './admin-user-list/admin-user-list.component';
 import { AdminUserCreateFormComponent } from './admin-user-create-form/admin-user-create-form.component';
 import { AdminUserEditFormComponent } from './admin-user-edit-form/admin-user-edit-form.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 
 @NgModule({
     declarations: [
@@ -56,7 +57,8 @@ import { AdminUserEditFormComponent } from './admin-user-edit-form/admin-user-ed
         MyProfileGravatarComponent,
         AdminUserListComponent,
         AdminUserCreateFormComponent,
-        AdminUserEditFormComponent
+        AdminUserEditFormComponent,
+        AdminDashboardComponent
     ],
     imports: [
         BrowserModule,

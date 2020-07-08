@@ -11,6 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { AdminKitDetailsComponent } from './admin-kit-details/admin-kit-details.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { AdminUserListComponent } from './admin-user-list/admin-user-list.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 
 const routes: Routes = [
     {
@@ -51,8 +52,8 @@ const routes: Routes = [
     },
     {
         path: 'admin',
-        redirectTo: '/admin/kits',
-        pathMatch: 'full'
+        component: AdminDashboardComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: '',
