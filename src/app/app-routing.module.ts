@@ -10,6 +10,7 @@ import { KitDetailsComponent } from './kit-details/kit-details.component';
 import { HomeComponent } from './home/home.component';
 import { AdminKitDetailsComponent } from './admin-kit-details/admin-kit-details.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
+import { AdminUserListComponent } from './admin-user-list/admin-user-list.component';
 
 const routes: Routes = [
     {
@@ -42,6 +43,16 @@ const routes: Routes = [
         path: 'admin/kits/:KitId',
         component: AdminKitDetailsComponent,
         canActivate: [AuthGuard]
+    },
+    {
+        path: 'admin/users',
+        component: AdminUserListComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'admin',
+        redirectTo: '/admin/kits',
+        pathMatch: 'full'
     },
     {
         path: '',

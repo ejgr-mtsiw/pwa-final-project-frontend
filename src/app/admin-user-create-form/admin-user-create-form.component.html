@@ -1,0 +1,48 @@
+<div *ngIf="user">
+    <form #userCreateForm="ngForm" (ngSubmit)="onSubmit()" class="shadow-sm p-3 mb-5 bg-white rounded">
+        <div class="form-group">
+            <label for="name">Nome</label>
+            <input type="text" id="name" name="name" required [(ngModel)]="user.name" class="form-control"
+                #name="ngModel">
+
+            <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+                Por favor, introduza um nome para o utilizador.
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" email required [(ngModel)]="user.email" class="form-control"
+                #email="ngModel">
+
+            <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+                Por favor, introduza um endereço de e-mail válido.
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="photo">Password</label>
+            <input type="password" id="password" name="password" required [(ngModel)]="user.password"
+                class="form-control" #password="ngModel">
+
+            <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
+                Por favor, introduza uma password.
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="role">Tipo de conta</label>
+            <select name="role" id="role" [(ngModel)]="user.role" #role="ngModel" class="form-control">
+                <option value="user">Utilizador</option>
+                <option value="admin">Administrador</option>
+            </select>
+        </div>
+
+        <button class="btn btn-primary" [disabled]="!userCreateForm.form.valid" type="submit">
+            Criar novo Utilizador
+        </button>
+        <button class="btn btn-secondary ml-3" (click)="onCancel()">Cancelar</button>
+
+        <app-message-display [message]="message"></app-message-display>
+    </form>
+</div>
