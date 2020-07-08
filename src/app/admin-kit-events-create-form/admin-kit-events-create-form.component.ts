@@ -4,6 +4,7 @@ import { MessageTypes, Message } from '../message/message';
 import { EventsService } from '../services/events.service';
 import { Kit } from '../models/kit';
 import * as moment from 'moment';
+import { AuthService } from '../services/auth.service';
 
 @Component({
     selector: 'app-admin-kit-events-create-form',
@@ -21,6 +22,7 @@ export class AdminKitEventsCreateFormComponent implements OnInit {
     event: Event = {
         id: 0,
         KitId: 0,
+        UserId: 0,
         date: '',
         description: '',
         details: ''
@@ -29,18 +31,20 @@ export class AdminKitEventsCreateFormComponent implements OnInit {
     messageTypes = MessageTypes;
     message!: Message;
 
-    constructor(private eventService: EventsService) { }
+    constructor(private eventService: EventsService, private authService: AuthService) { }
 
-    ngOnInit(): void {
-        this.event.KitId = this.kit.id;
-    }
+    ngOnInit(): void { }
 
     onSubmit() {
         this.event.date = moment().format();
+        this.event.KitId = this.kit.id;
+        this.event.UserId = this.authService.authenticatedUser.id;
 
         this.eventService.addEvent(this.event).subscribe((result) => {
             this.event.description = '';
             this.event.details = '';
+
+            result.event.User = this.authService.authenticatedUser;
 
             return this.newEvent.emit(result.event);
         }, (error) => {
