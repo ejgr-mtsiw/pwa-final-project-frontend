@@ -8,19 +8,26 @@
 
 <h1>Administração</h1>
 
-<div class="card-deck">
-    <div class="card">
-        <img src="./assets/img/fundo_aemb_abril_2019.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">Kits</h5>
-            <p class="card-text">Administrar os kits disponíveis e registar ocorrências.</p>
+<div class="row row-cols-1 row-cols-md-2">
+    <div class="col">
+        <div class="card">
+            <img src="./assets/img/Paper_Arduino_Project_Box_Pieces.jpg" class="card-img-top"
+                alt="Administrar os kits disponíveis e registar ocorrências.">
+            <div class="card-body">
+                <h5 class="card-title">Kits</h5>
+                <p class="card-text">Administrar os kits disponíveis e registar ocorrências.</p>
+                <a routerLink="/admin/kits" class="btn btn-primary stretched-link">Gerir Kits</a>
+            </div>
         </div>
     </div>
-    <div *ngIf="authService.isAdmin()" class="card">
-        <img src="./assets/img/avatar.png" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">Utilizadores</h5>
-            <p class="card-text">Administrar utilizadores do sistema.</p>
+    <div class="col" *ngIf="authService.isAdmin()">
+        <div class="card">
+            <img src="./assets/img/avatar.png" class="card-img-top" alt="Administrar utilizadores do sistema.">
+            <div class="card-body">
+                <h5 class="card-title">Utilizadores</h5>
+                <p class="card-text">Administrar utilizadores do sistema.</p>
+                <a routerLink="/admin/users" class="btn btn-primary stretched-link">Gerir Utilizadores</a>
+            </div>
         </div>
     </div>
 </div>
